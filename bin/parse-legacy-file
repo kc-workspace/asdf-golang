@@ -10,6 +10,15 @@
 #   return 0
 # }
 
+_kc_asdf_custom_parse_version_file() {
+  local filepath="$1"
+  if [[ "$filepath" =~ go.(mod|work)$ ]]; then
+    grep 'go\s*[0-9]' "$filepath" |
+      sed -E -e 's/go\s*//' |
+      tr -d ' '
+  fi
+}
+
 ## -----------------------
 
 set -euo pipefail
