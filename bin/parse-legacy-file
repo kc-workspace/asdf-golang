@@ -21,20 +21,7 @@ _kc_asdf_custom_parse_version_file() {
     query="$(cat "$filepath")"
   fi
 
-  ## copied code from latest-stable.sh
-  kc_asdf_load_addon "tags"
-  local tmpfile filter="^\\s*go"
-  tmpfile="$(kc_asdf_tags_list)"
-  tmpfile="$(kc_asdf_tags_only "$tmpfile" "$filter")"
-  tmpfile="$(kc_asdf_tags_format "$tmpfile" "$filter")"
-  tmpfile="$(kc_asdf_tags_only "$tmpfile" "^\\s*$query")"
-  command -v _kc_asdf_custom_filter >/dev/null &&
-    tmpfile="$(_kc_asdf_custom_filter "$tmpfile" "$query")"
-  tmpfile="$(kc_asdf_tags_stable "$tmpfile")"
-  tmpfile="$(kc_asdf_tags_sort "$tmpfile")"
-  kc_asdf_debug "$ns" "final tags read from %s" "$tmpfile" &&
-    tail -n1 "$tmpfile" &&
-    __asdf_if_not_debug rm "$tmpfile"
+  kc_asdf_call_bin "latest-stable" "$query"
 }
 
 ## -----------------------
