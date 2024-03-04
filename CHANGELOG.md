@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/kc-workspace/asdf-golang/compare/v1.0.1...v1.0.2) (2024-03-04)
+
+
+### Performance Improvements
+
+* update plugin from template [autocommit] ([64e609b](https://github.com/kc-workspace/asdf-golang/commit/64e609b687e4e33243f10068b0c6b604cb3bda09))
+* update plugin from template [autocommit] ([ed87e27](https://github.com/kc-workspace/asdf-golang/commit/ed87e279a1a5d93bf17175a3cf2955b04c0f8f87))
+
 ## [1.0.1](https://github.com/kc-workspace/asdf-golang/compare/v1.0.0...v1.0.1) (2023-11-06)
 
 
