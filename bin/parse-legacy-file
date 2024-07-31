@@ -11,17 +11,36 @@
 # }
 
 _kc_asdf_custom_parse_version_file() {
+  kc_asdf_load_addon "tags"
+
   local ns="parse-file.version"
-  local filepath="$1" query
-  if [[ "$filepath" =~ go.(mod|work)$ ]]; then
-    query="$(grep 'go\s*[0-9]' "$filepath" |
+  local filepath="$1" version=""
+  if [[ $filepath =~ go.(mod|work)$ ]]; then
+    kc_asdf_debug "$ns" "resolving version from %s" \
+      "$(basename "$filepath")"
+    version=$(grep 'go\s*[0-9]' "$filepath" |
       sed -E -e 's/go\s*//' |
-      tr -d ' ')"
-  elif [ -f "$filepath" ]; then
-    query="$(cat "$filepath")"
+      tr -d ' ')
+  elif [ -e "$filepath" ]; then
+    kc_asdf_debug "$ns" "getting raw version from %s" \
+      "$(basename "$filepath")"
+    version=$(cat "$filepath")
   fi
 
-  kc_asdf_call_bin "latest-stable" "$query"
+  local installed temp_file
+  temp_file="$(kc_asdf_tags_list_installed "$version")"
+  temp_file="$(kc_asdf_tags_sort "$temp_file")"
+  kc_asdf_debug "$ns" "select last version from %s" "$temp_file" &&
+    installed=$(tail -n1 "$temp_file") &&
+    __asdf_if_not_debug rm "$temp_file"
+
+  if [ -z "$installed" ]; then
+    kc_asdf_debug "$ns" \
+      "cannot resolve local version, fetch from latest stable version instead"
+    installed=$(kc_asdf_call_bin "latest-stable" "$version")
+  fi
+
+  echo "$installed"
 }
 
 ## -----------------------
