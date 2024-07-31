@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.2](https://github.com/kc-workspace/asdf-golang/compare/v1.0.1...v1.0.2) (2024-07-31)
+
+
+### Performance Improvements
+
+* **plugin:** update template version [bot] ([23600d6](https://github.com/kc-workspace/asdf-golang/commit/23600d672b0b0230d4cee22f685032a8b096d303))
+* **plugin:** update template version /Users/kamontat/.asdf/shims/yq ([2a7f9ba](https://github.com/kc-workspace/asdf-golang/commit/2a7f9bab98e8522b5aac7cc07e001e36cb25d312))
+* **plugin:** upgrade template to version v2.7.3 [bot] ([4cd22fc](https://github.com/kc-workspace/asdf-golang/commit/4cd22fc2c032856ba1fcab4e87b08e9eb2eed3f8))
+* update plugin from template [autocommit] ([64e609b](https://github.com/kc-workspace/asdf-golang/commit/64e609b687e4e33243f10068b0c6b604cb3bda09))
+* update plugin from template [autocommit] ([ed87e27](https://github.com/kc-workspace/asdf-golang/commit/ed87e279a1a5d93bf17175a3cf2955b04c0f8f87))
+
 ## [1.0.1](https://github.com/kc-workspace/asdf-golang/compare/v1.0.0...v1.0.1) (2023-11-06)
 
 
